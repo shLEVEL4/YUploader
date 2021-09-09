@@ -1,0 +1,55 @@
+﻿<Window x:Class="YUploader.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YUploader"
+        mc:Ignorable="d"
+        Title="Yahooストア 自動出品ツール"
+        Height="725"
+        Width="1307"
+        Background="#FFE4E4E4"
+        Loaded="MainWindowLoaded">
+    <Canvas >
+        <Label x:Name="lstore" Content="ストア" Height="26" VerticalAlignment="Top" Canvas.Left="33" Canvas.Top="9"/>
+        <ComboBox x:Name="Store" Width="143" Canvas.Left="71" Canvas.Top="10" SelectionChanged="ComboBoxElmChanged" >
+            <ComboBoxItem>ebay</ComboBoxItem>
+            <ComboBoxItem>BUYMA</ComboBoxItem>
+            <ComboBoxItem>ETOREN</ComboBoxItem>
+        </ComboBox>
+        <Label x:Name="YidLabel" Content="YahooAppID" Height="26" RenderTransformOrigin="1.839,0.692" Canvas.Left="31" Canvas.Top="177"/>
+        <TextBox x:Name="Yid" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" Width="576" Canvas.Left="108" Canvas.Top="178" TextChanged="Yid_TextChanged"/>
+        <Button x:Name="Search" Content="検索" Background="DeepSkyBlue" Foreground="White" BorderBrush="DeepSkyBlue" Grid.Column="2" Canvas.Left="705" Canvas.Top="176" Height="28" Width="69" Click="ItemSearch" />
+        <ScrollViewer x:Name="ResultScroll" Height="390" Canvas.Left="9" Canvas.Top="235" Width="1279">
+            <StackPanel x:Name="ResultStack">
+            </StackPanel>
+        </ScrollViewer>
+        <Label x:Name="UrlLabel" Content="URL" Height="26" RenderTransformOrigin="1.839,0.692" Canvas.Left="228" Canvas.Top="7"/>
+        <TextBox x:Name="Url" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" Width="514" Canvas.Left="260" Canvas.Top="8" TextChanged="Url_TextChanged"/>
+        <TextBlock x:Name="LoginStatus" Canvas.Left="111" TextWrapping="Wrap" Canvas.Top="202" Height="11" FontSize="10"/>
+        <TextBlock x:Name="SearchResult" Canvas.Left="649" TextWrapping="Wrap" Canvas.Top="208" Height="15" FontSize="12"/>
+        <Label x:Name="SellerLabel" Content="出品者" Height="26" RenderTransformOrigin="1.839,0.692" Canvas.Left="32" Canvas.Top="73"/>
+        <TextBox x:Name="Seller" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" Width="311" Canvas.Left="79" Canvas.Top="76" TextChanged="Seller_TextChanged"/>
+        <Label Content="カテゴリ" Height="26" RenderTransformOrigin="1.839,0.692" Canvas.Left="405" Canvas.Top="75"/>
+        <ComboBox
+            Name="AllCategory"
+            ItemsSource="{Binding categoryList}"
+            SelectedValuePath="Key"
+            DisplayMemberPath="Value"
+            RenderTransformOrigin="8.536,4.091" Canvas.Left="452" Canvas.Top="77" SelectionChanged="ComboBoxElmChanged" />
+        <Button x:Name="UploadAll" Content="すべて出品" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Background="DeepSkyBlue" Foreground="White" BorderBrush="DeepSkyBlue" Height="30" Grid.Row="2" Grid.Column="2" RenderTransformOrigin="0.493,1.233" Canvas.Left="617" Canvas.Top="639" Click="UploadAll_Click" />
+        <Button x:Name="AllClear" Content="クリア" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Background="OrangeRed" Foreground="White" BorderBrush="OrangeRed" Height="30" Grid.Row="2" Grid.Column="2" Canvas.Left="703" Canvas.Top="639" Click="AllClear_Click" />
+        <Label Content="トークン取得先" Height="26" RenderTransformOrigin="1.839,0.692" Canvas.Left="32" Canvas.Top="107"/>
+        <TextBox x:Name="Token" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" Width="528" Canvas.Left="119" Canvas.Top="110" TextChanged="TextBoxElmChanged"/>
+        <Button x:Name="GetToken" Content="取得" Canvas.Left="657" Canvas.Top="110" Width="45" Click="GetToken_Click"/>
+        <Button x:Name="UpdateToken" Content="更新" Canvas.Left="712" Canvas.Top="110" Width="45"/>
+        <TextBlock x:Name="TokenResult" Canvas.Left="652" TextWrapping="Wrap" Canvas.Top="141" Height="15" FontSize="12"/>
+        <Label Content="パス" Height="26" VerticalAlignment="Top" Canvas.Left="33" Canvas.Top="140"/>
+        <ComboBox x:Name="AllPath" Canvas.Left="71" Canvas.Top="141" SelectionChanged="AllPathChanged" ></ComboBox>
+        <Button x:Name="Publish" Content="反映" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Background="DeepSkyBlue" Foreground="White" BorderBrush="DeepSkyBlue" Height="30" RenderTransformOrigin="0.493,1.233" Canvas.Left="19" Canvas.Top="640" Click="Publish_Click" />
+        <TextBlock x:Name="PublishResult" Canvas.Left="21" TextWrapping="Wrap" Canvas.Top="677"/>
+        <CheckBox x:Name="IsSearchPage" Content="検索結果画面から取得する" Canvas.Left="237" Canvas.Top="40" Checked="IsSearchPage_Changed" Unchecked="IsSearchPage_Changed"/>
+        <Label Content="出品間隔" Height="26" RenderTransformOrigin="1.839,0.692" Canvas.Left="469" Canvas.Top="643"/>
+        <TextBox x:Name="Interval" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" Width="66" Canvas.Left="529" Canvas.Top="645" TextChanged="Interval_TextChanged"/>
+    </Canvas>
+</Window>
